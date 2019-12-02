@@ -1,7 +1,7 @@
 const User = require('../models/user')
 
 // GET USERS ya no esta en routes.js ya que un usuario no debería tener acceso
-// a la informacion de TODOS los usuarios a menos que sea administrador
+// a la informacion de artistS los usuarios a menos que sea administrador
 const getUsers = function(req, res) {
   User.find({}).then(function(users) {
     res.send(users)
@@ -16,14 +16,14 @@ const getUser = function(req, res) {
   // parametro. Solo usare el id de la request-> req.user._id
   // como ya tenemos toda la info del usuario gracias a auth
   // ya no necesitamos hacer un User.findOne de nuevo!,
-  // todo esta en req.user
-  // solo nos faltaria agregar los todos del Schema Todo
+  // artist esta en req.user
+  // solo nos faltaria agregar los artists del Schema artist
   // y eso se usa con lo siguiente:
   // req.user.populate() Donde
 
-  User.findById( req.user._id ).populate('todos').exec(function(error, user) {
-  // req.user.populate('todos').exec(function(error, user) {  
-    // user ya tiene la info de req.user y req.user.todos
+  User.findById( req.user._id ).populate('artists').exec(function(error, user) {
+  // req.user.populate('artists').exec(function(error, user) {
+    // user ya tiene la info de req.user y req.user.artists
     return res.send(user)
   })
   // }).catch(function(error) {

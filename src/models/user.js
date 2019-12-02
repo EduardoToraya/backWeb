@@ -46,13 +46,13 @@ const userSchema = new mongoose.Schema({
     virtuals: true
   },
   toJSON: {
-    virtuals: true 
+    virtuals: true
   }
 })
 
-// una relacion entre dos Schemas, no lo guarda, es virtual 
-userSchema.virtual('todos', {
-  ref: 'Todo',
+// una relacion entre dos Schemas, no lo guarda, es virtual
+userSchema.virtual('artists', {
+  ref: 'Artist',
   localField: '_id',
   foreignField: 'createdBy'
 })
@@ -110,11 +110,10 @@ userSchema.pre('save', function(next) {
       return next(error)
     })
   } else {
-    next()  
+    next()
   }
 })
 
 const User = mongoose.model('User', userSchema)
 
 module.exports = User
-

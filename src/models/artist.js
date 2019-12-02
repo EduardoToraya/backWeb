@@ -1,14 +1,10 @@
 const mongoose = require('mongoose')
 const validator = require('validator')
 
-const todoSchema = new mongoose.Schema({
-  description: {
+const artistSchema = new mongoose.Schema({
+  name: {
     type: String,
     required: true
-  },
-  completed: {
-    type: Boolean,
-    default: false
   },
   createdBy: {
     type: mongoose.Schema.Types.ObjectId,
@@ -17,6 +13,6 @@ const todoSchema = new mongoose.Schema({
   }
 })
 
-const Todo = mongoose.model('Todo', todoSchema)
+const Artist = mongoose.model('Artist', artistSchema)
 
-module.exports = Todo
+module.exports = Artist
